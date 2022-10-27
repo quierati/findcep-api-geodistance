@@ -1,0 +1,37 @@
+{
+  "resources": [
+    {
+      "name": "api_handler_role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::330478584383:role/findcep-api-geolocation-distance-prod-api_handler",
+      "role_name": "findcep-api-geolocation-distance-prod-api_handler"
+    },
+    {
+      "name": "api_handler",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:sa-east-1:330478584383:function:findcep-api-geolocation-distance-prod"
+    },
+    {
+      "name": "rest_api",
+      "resource_type": "rest_api",
+      "rest_api_id": "qlff7f6ybf",
+      "rest_api_url": "https://qlff7f6ybf.execute-api.sa-east-1.amazonaws.com/v1/"
+    },
+    {
+      "name": "api_gateway_custom_domain",
+      "resource_type": "domain_name",
+      "hosted_zone_id": "Z2FDTNDATAQYW2",
+      "alias_domain_name": "d2903bfkf42dyu.cloudfront.net",
+      "certificate_arn": "arn:aws:acm:us-east-1:330478584383:certificate/21154615-57ee-414b-8875-e4d06cde60a4",
+      "security_policy": "TLS_1_2",
+      "domain_name": "geolocation-distance.api.findcep.com",
+      "api_mapping": [
+        {
+          "key": "/v1"
+        }
+      ]
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}

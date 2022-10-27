@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - export DEBIAN_FRONTEND=noninteractive
+      - export LAST_MONTH=${LAST_MONTH:-$(date -d "1 month ago" +%Y-%m)}
+      - export MONTH=${MONTH:-$(date +%Y-%m)}
+  pre_build:
+    commands:
+      - echo ":: INIT FINDCEP GEOLOCATION CEP UPDATER ::"
+      - aws s3 cp s3://findcep-data/npz/GEOCEP-$LAST_MONTH.npz GEOCEP.npz
+  build:
+    commands:
+      - echo ":: UPDATE FINDCEP API GEOLOCATION CEP ::"
+      - python3 scripts/generate_geocep_npz.py geolocation-$MONTH.json.gz
+  post_build:
+    commands:
+      - echo ":: FINDCEP GEOLOCATION CEP FINISH ::"
+      - aws s3 cp GEOCEP.npz s3://findcep-data/npz/GEOCEP-$MONTH.npz
+      - mv GEOCEP.npz vendor/GEOCEP.npz
+      - AWS_DEFAULT_REGION=sa-east-1 chalice deploy --stage prod  
+
+# vim: set ft=yaml et ts=2 sw=2 :
+

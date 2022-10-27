@@ -1,0 +1,36 @@
+{
+  "version": "2.0",
+  "app_name": "findcep-api-geolocation-distance",
+  "stages": {
+    "qa": {
+      "autogen_policy": false,
+      "reserved_concurrency": 5,
+      "lambda_timeout": 10,
+      "lambda_memory_size": 512,
+      "api_gateway_stage": "qa"
+    },
+    "dev": {
+      "autogen_policy": false,
+      "reserved_concurrency": 5,
+      "lambda_timeout": 10,
+      "lambda_memory_size": 512,
+      "api_gateway_stage": "dev",
+      "region": "us-east-1"
+    },
+    "prod": {
+      "autogen_policy": false,
+      "reserved_concurrency": 5,
+      "lambda_timeout": 10,
+      "lambda_memory_size": 512,
+      "api_gateway_stage": "v1",
+      "region": "sa-east-1",
+      "api_gateway_custom_domain": {
+        "domain_name": "geolocation-distance.api.findcep.com",
+        "certificate_arn": "arn:aws:acm:us-east-1:330478584383:certificate/21154615-57ee-414b-8875-e4d06cde60a4",
+        "tls_version": "TLS_1_2",
+        "url_prefixes": ["v1", "qa"],
+        "url_prefix": "v1"
+      }
+    }
+  }
+}

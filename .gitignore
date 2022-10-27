@@ -1,0 +1,10 @@
+.chalice/deployments/
+.chalice/venv/
+.venv/
+/venv/
+__pycache__/
+*.swp
+*.npz
+*.csv
+*.log
+
