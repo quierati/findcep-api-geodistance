@@ -1,12 +1,12 @@
 # API GEO DISTANCE
 
-Esta api tem a funcionalidade de calcular a distância entre dois pontos (cep ou latitude e longitude) com retorno em kilometros, e suporta simula a distância para rota.
+Esta api tem a funcionalidade de calcular a distância entre dois pontos (cep ou latitude e longitude) com retorno em kilometros e metros, e suporta simulação aproximada para distância em rota.
 
 
 ### How to Deploy Production
 Get the latest version of the geocep database
 ```sh
-aws s3 cp s3://findcep-data/npz/GEOCEP-$(date +%Y%m).npz vendor/GEOCEP.npz
+aws s3 cp s3://findcep-data/npz/GEOCEP-$(date +%Y-%m).npz vendor/GEOCEP.npz
 ```
 
 Load python requirements
